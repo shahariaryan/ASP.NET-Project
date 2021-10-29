@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Portal.Models.User>
+
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "View Users";
+}
+
+
+
+
+<h2>View Users</h2>
+
+    <a href="/Admin/CreateUser" class="btn btn-default">Create New User</a>
+
+    <form action="/Admin/CheckUsers" method="post" class="search-box">
+
+        <input class="form-control" type="text" name="searchuser" value="" placeholder="Search Users by Name">
+        <input class="btn btn-primary" type="submit" value="Search" />
+
+
+    </form>
+
+    
+    <table class="table table-bordered">
+        <tr>
+
+
+            <td>User ID</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Department</td>
+            <td>Type</td>
+            <td></td>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+
+                <td>@user.uid</td>
+                <td>@user.name</td>
+                <td>@user.email</td>
+                <td>@user.department</td>
+                <td>@user.type</td>
+
+                <td>
+
+                    <a href="/Admin/EditUser/@user.userid" class="btn btn-success">Edit</a>
+                    <a href="/Admin/DeleteUser/@user.userid" class="btn btn-danger">Delete</a>
+                </td>
+
+            </tr>
+        }
+    </table>

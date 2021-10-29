@@ -1,0 +1,25 @@
+﻿@model Portal.Models.Cours
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "DeleteCourse";
+}
+<h2>Are you sure you want to delete @Model.name?</h2>
+<div>
+    <h4>Course Details</h4>
+
+    <h5>Course Name: @Model.name</h5>
+    <h5>Department: @Model.department</h5>
+    <h5>Course Section: @Model.section</h5>
+    <h5>Time: @Model.time</h5>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a href="/Admin/CheckCourse/" class="btn btn-default">Go Back</a>
+        </div>
+    }
+</div>

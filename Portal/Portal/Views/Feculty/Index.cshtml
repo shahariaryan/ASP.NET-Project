@@ -1,0 +1,32 @@
+﻿@model List<Portal.Models.Cours>
+@{
+    Layout = "~/Views/Shared/_FecultyLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Courses</h2>
+<table class="table table-bordered">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Section</th>
+        <th>Time</th>
+        <th></th>
+    </tr>
+ @foreach(var c in Model)
+  {
+<tr>
+    <td>@c.id</td>
+    <td>@c.name</td>
+    <td>@c.department</td>
+    <td>@c.section</td>
+    <td>@c.time</td>
+    <td><a href="Feculty/Details/@c.id" class="btn btn-success">Details</a></td>
+   
+
+</tr>
+  }
+
+</table>

@@ -1,0 +1,29 @@
+﻿@model Portal.Models.Notice
+
+@{
+    Layout = "~/Views/Shared/_FecultyLayout.cshtml";
+    ViewBag.Title = "DeleteNotice";
+}
+
+<h2>Delete Notice</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<h4>Grade Details</h4>
+
+<h5>Notice For: @Model.usertype</h5>
+<h5>Notice: @Model.notice1</h5>
+<h5>Post Date: @Model.createdat</h5>
+<h5>Status: @Model.status</h5>
+<h5>Update Info: @Model.updateinfo</h5>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+        <a href="/Feculty/CheckNotice/" class="btn btn-default">Go Back</a>
+    </div>
+}
+</div>

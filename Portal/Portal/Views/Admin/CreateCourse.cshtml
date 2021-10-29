@@ -1,0 +1,62 @@
+﻿@model Portal.Models.Cours
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "AddUser";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Cours</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="name" value="" placeholder="Course Name" />
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.department, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="department" class="form-control">
+                    <option selected disabled>SELECT</option>
+                    <option value="FASS">FASS</option>
+                    <option value="FBA">FBA</option>
+                    <option value="FE">FE</option>
+                    <option value="FST">FST</option>
+                </select>
+            </div>
+         </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.section, "Section", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="section" value="" placeholder="Course Section" />
+                    @Html.ValidationMessageFor(model => model.section, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.time, "Time", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="time" value="" placeholder="Course Time" />
+                    @Html.ValidationMessageFor(model => model.time, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+}
+
+<div>
+    <a href="/Admin/Home" class="btn btn-default">Go Back</a>
+</div>

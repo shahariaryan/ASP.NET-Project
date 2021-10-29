@@ -1,0 +1,25 @@
+﻿@model Portal.Models.Mark
+
+@{
+    Layout = "~/Views/Shared/_FecultyLayout.cshtml";
+    ViewBag.Title = "DeleteNotice";
+}
+
+<h2>Are you sure you want to delete grade for @Model.coursename?</h2>
+<div>
+    <h4>Grade Details</h4>
+
+    <h5>Course Name: @Model.coursename</h5>
+    <h5>Department: @Model.department</h5>
+    <h5>Course Grade: @Model.grade</h5>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a href="/Feculty/CheckGrade/" class="btn btn-default">Go Back</a>
+        </div>
+    }
+</div>

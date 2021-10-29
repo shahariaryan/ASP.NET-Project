@@ -1,0 +1,38 @@
+﻿@model List<Portal.Models.Notice>
+@{
+    Layout = "~/Views/Shared/_FecultyLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Notices</h2>
+<table class="table table-bordered">
+    <tr>
+
+
+        <td>Notice For</td>
+        <td>Notice</td>
+        <td>Status</td>
+        <td>Updates</td>
+        <td>Posting Time</td>
+
+        <td></td>
+    </tr>
+    @foreach (var n in Model)
+    {
+<tr>
+
+    <td>@n.usertype</td>
+    <td>@n.notice1</td>
+    <td>@n.status</td>
+    <td>@n.updateinfo</td>
+    <td>@n.createdat</td>
+
+    <td>
+
+        <a href="/Feculty/EditNotice/@n.noticeid" class="btn btn-success">Edit Notice</a>
+        <a href="/Feculty/DeleteNotice/@n.noticeid" class="btn btn-danger">Delete Notice</a>
+    </td>
+
+</tr>
+    }
+</table>
