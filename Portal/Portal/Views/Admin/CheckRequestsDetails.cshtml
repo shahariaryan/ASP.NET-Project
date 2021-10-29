@@ -1,0 +1,30 @@
+﻿@model Portal.Models.User
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+
+<h4>Student Info</h4>
+
+<table class="table table-bordered">
+    <tr>
+        <td>Student Id</td>
+        <td>Student Name</td>
+        <td>Course Name</td>
+        <td>Department</td>
+        <td>Status</td>
+    </tr>
+    @foreach (var ms in Model.Requests)
+    {
+        <tr>
+            <td>@Model.uid</td>
+            <td>@Model.name</td>
+            <td>@ms.coursename</td>
+            <td>@ms.department</td>
+            <td>@ms.status</td>
+
+        </tr>
+    }
+</table>
+

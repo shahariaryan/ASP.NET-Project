@@ -27,7 +27,6 @@ namespace Portal.Controllers
                 {
 
                     FormsAuthentication.SetAuthCookie(user.userid.ToString(), true);
-                    Session["usertype"] = user.type;
                     Session["name"] = user.name;
                     Session["id"] = user.userid;
 

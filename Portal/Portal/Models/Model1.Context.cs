@@ -28,6 +28,7 @@ namespace Portal.Models
         public DbSet<Cours> Courses { get; set; }
         public DbSet<Mark> Marks { get; set; }
         public DbSet<Notice> Notices { get; set; }
+        public DbSet<Request> Requests { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<User> Users { get; set; }
     }

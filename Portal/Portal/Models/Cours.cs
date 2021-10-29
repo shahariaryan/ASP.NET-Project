@@ -11,8 +11,7 @@ namespace Portal.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Cours
     {
         public Cours()
@@ -21,13 +20,9 @@ namespace Portal.Models
         }
     
         public int id { get; set; }
-        [Required]
         public string name { get; set; }
-        [Required]
         public string department { get; set; }
-        [Required]
         public string section { get; set; }
-        [Required]
         public string time { get; set; }
     
         public virtual ICollection<User> Users { get; set; }

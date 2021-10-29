@@ -35,6 +35,17 @@
     <Property Name="updateinfo" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="User" Relationship="Self.FK_Notices_Users" FromRole="Notices" ToRole="Users" />
   </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="coursename" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="department" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Requests_Users" FromRole="Requests" ToRole="Users" />
+  </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -61,6 +72,7 @@
     <NavigationProperty Name="Cours" Relationship="Self.FK_Users_Course" FromRole="Users" ToRole="Courses" />
     <NavigationProperty Name="Marks" Relationship="Self.FK_Marks_Student" FromRole="Users" ToRole="Marks" />
     <NavigationProperty Name="Notices" Relationship="Self.FK_Notices_Users" FromRole="Users" ToRole="Notices" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_Requests_Users" FromRole="Users" ToRole="Requests" />
   </EntityType>
   <Association Name="FK_Users_Course">
     <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
@@ -98,10 +110,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Requests_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Requests" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="PortalEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Courses" EntityType="Self.Cours" />
     <EntitySet Name="Marks" EntityType="Self.Mark" />
     <EntitySet Name="Notices" EntityType="Self.Notice" />
+    <EntitySet Name="Requests" EntityType="Self.Request" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <AssociationSet Name="FK_Users_Course" Association="Self.FK_Users_Course">
@@ -115,6 +140,10 @@
     <AssociationSet Name="FK_Notices_Users" Association="Self.FK_Notices_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Notices" EntitySet="Notices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Users" Association="Self.FK_Requests_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Requests" EntitySet="Requests" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

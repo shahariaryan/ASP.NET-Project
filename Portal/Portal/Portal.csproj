@@ -158,6 +158,9 @@
     <Compile Include="Models\Notice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Request.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -246,6 +249,11 @@
     <Content Include="Views\Admin\CheckCourseDetails.cshtml" />
     <Content Include="Views\Admin\EditCourse.cshtml" />
     <Content Include="Views\Admin\DeleteCourse.cshtml" />
+    <Content Include="Views\Admin\CheckRequests.cshtml" />
+    <Content Include="Views\Admin\CheckRequestsDetails.cshtml" />
+    <Content Include="Views\Admin\EditRequest.cshtml" />
+    <Content Include="Views\Admin\DeleteRequest.cshtml" />
+    <Content Include="Views\Feculty\AllStudentsDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

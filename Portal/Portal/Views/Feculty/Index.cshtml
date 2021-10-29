@@ -5,6 +5,15 @@
 }
 
 <h2>Courses</h2>
+<form action="/Feculty/Index" method="post" class="search-box">
+
+    <input class="form-control" type="text" name="searchCourse" value="" placeholder="Search Courses by Name">
+    <input class="btn btn-primary" type="submit" value="Search" />
+
+
+</form>
+
+
 <table class="table table-bordered">
 
     <tr>
@@ -23,7 +32,7 @@
     <td>@c.department</td>
     <td>@c.section</td>
     <td>@c.time</td>
-    <td><a href="Feculty/Details/@c.id" class="btn btn-success">Details</a></td>
+    <td><a href="/Feculty/Details/@c.id" class="btn btn-success">Details</a></td>
    
 
 </tr>

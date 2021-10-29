@@ -11,35 +11,29 @@ namespace Portal.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class User
     {
         public User()
         {
             this.Marks = new HashSet<Mark>();
             this.Notices = new HashSet<Notice>();
+            this.Requests = new HashSet<Request>();
         }
     
         public int userid { get; set; }
-        [Required]
         public string uid { get; set; }
-        [Required]
         public string name { get; set; }
-        [Required]
         public string email { get; set; }
-        [Required]
         public string department { get; set; }
-        [Required]
         public string cgpa { get; set; }
-        [Required]
         public string password { get; set; }
-        [Required]
         public string type { get; set; }
         public int courseid { get; set; }
     
         public virtual Cours Cours { get; set; }
         public virtual ICollection<Mark> Marks { get; set; }
         public virtual ICollection<Notice> Notices { get; set; }
+        public virtual ICollection<Request> Requests { get; set; }
     }
 }

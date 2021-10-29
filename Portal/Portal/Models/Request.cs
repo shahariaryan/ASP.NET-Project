@@ -12,12 +12,12 @@ namespace Portal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Mark
+    public partial class Request
     {
         public int id { get; set; }
         public string coursename { get; set; }
         public string department { get; set; }
-        public string grade { get; set; }
+        public string status { get; set; }
         public int userid { get; set; }
     
         public virtual User User { get; set; }

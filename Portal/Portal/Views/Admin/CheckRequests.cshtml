@@ -1,0 +1,33 @@
+﻿@model List<Portal.Models.Request>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "CheckRequests";
+}
+
+<h2>Course Requests</h2>
+<table class="table table-bordered">
+    <tr>
+
+
+        <td>Course Name</td>
+        <td>Department</td>
+        <td>Status</td>
+
+        <td></td>
+    </tr>
+    @foreach (var cs in Model)
+    {
+        <tr>
+
+            <td>@cs.coursename</td>
+            <td>@cs.department</td>
+            <td>@cs.status</td>
+            <td>
+                <a href="/Admin/CheckRequestsDetails/@cs.userid" class="btn btn-default">Request Details</a>
+                <a href="/Admin/EditRequest/@cs.id" class="btn btn-success">Approve</a>
+                <a href="/Admin/DeleteRequest/@cs.id" class="btn btn-danger">Decline</a>
+            </td>
+
+        </tr>
+    }
+</table>

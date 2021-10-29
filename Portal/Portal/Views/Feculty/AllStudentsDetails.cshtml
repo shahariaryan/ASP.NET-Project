@@ -1,0 +1,41 @@
+﻿@model List<Portal.Models.User>
+@{
+    Layout = "~/Views/Shared/_FecultyLayout.cshtml";
+    ViewBag.Title = "StudentList";
+}
+
+<h2>Students List</h2>
+
+<form action="/Feculty/AllStudentsDetails" method="post" class="search-box">
+
+<input class="form-control" type="text" name="searchuser" value="" placeholder="Search Name">
+<input class="btn btn-primary" type="submit" value="Search" />
+
+</form>
+
+<table class="table table-bordered">
+
+    <tr>
+
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>CGPA</th>
+
+
+    </tr>
+    @foreach (var p in Model)
+    {
+        <tr>
+
+            <td>@p.name</td>
+            <td>@p.email</td>
+            <td>@p.department</td>
+            <td>@p.cgpa</td>
+
+
+        </tr>
+
+    }
+
+</table>

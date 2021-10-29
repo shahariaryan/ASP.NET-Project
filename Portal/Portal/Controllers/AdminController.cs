@@ -193,6 +193,68 @@ namespace Portal.Controllers
             db.SaveChanges();
             return RedirectToAction("CheckCourse");
         }
+        public ActionResult CheckRequests()
+        {
+            PortalEntities db = new PortalEntities();
+            var req= db.Requests.ToList();
+            return View(req);
+        }
+
+        public ActionResult CheckRequestsDetails(int id)
+        {
+
+            PortalEntities db = new PortalEntities();
+
+            var user = (from m in db.Users
+                        where m.userid == id
+                        select m).FirstOrDefault();
+
+            return View(user);
+        }
+        public ActionResult EditRequest(int id)
+        {
+            PortalEntities db = new PortalEntities();
+            var req= (from r in db.Requests
+                          where r.id == id
+                          select r).FirstOrDefault();
+            return View(req);
+        }
+        [HttpPost]
+        public ActionResult EditRequest(Request r)
+        {
+            PortalEntities db = new PortalEntities();
+            var req = (from rq in db.Requests
+                          where rq.id == r.id
+                          select rq).FirstOrDefault();
+
+
+            req.coursename = r.coursename;
+            req.department = r.department;
+            req.status = "Approved";
+            db.SaveChanges();
+            return RedirectToAction("CheckRequests");
+        }
+        public ActionResult DeleteRequest(int id)
+        {
+            PortalEntities db = new PortalEntities();
+            var request = (from rr in db.Requests
+                           where rr.id == id
+                           select rr).FirstOrDefault();
+            return View(request);
+        }
+
+        [HttpPost]
+        [ActionName("DeleteRequest")]
+        public ActionResult DeleteRequests(int id)
+        {
+            PortalEntities db = new PortalEntities();
+            var request = (from rr in db.Requests
+                           where rr.id == id
+                           select rr).FirstOrDefault();
+            db.Requests.Remove(request);
+            db.SaveChanges();
+            return RedirectToAction("CheckRequests");
+        }
     }
 
 } 

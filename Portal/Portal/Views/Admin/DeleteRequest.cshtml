@@ -1,0 +1,25 @@
+﻿@model Portal.Models.Request
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "DeleteRequest";
+}
+
+<h2>Are you sure you want to Decline request for @Model.coursename?</h2>
+<div>
+    <h4>Request Details</h4>
+
+    <h5>Course Name: @Model.coursename</h5>
+    <h5>Department: @Model.department</h5>
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Yes" class="btn btn-danger" />
+            <a href="/Admin/CheckRequests/" class="btn btn-default">Go Back</a>
+        </div>
+    }
+</div>

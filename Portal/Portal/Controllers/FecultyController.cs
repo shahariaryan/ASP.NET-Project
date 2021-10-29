@@ -24,6 +24,17 @@ namespace Portal.Controllers
 
              
         }
+
+        [HttpPost]
+        public ActionResult Index(string searchCourse)
+        {
+            PortalEntities db = new PortalEntities();
+            var course = (from c in db.Courses
+                         where c.name.Contains(searchCourse)
+                         select c).ToList();
+            return View(course);
+        }
+
         public ActionResult Details(int Id)
         {
             PortalEntities db = new PortalEntities();
@@ -43,9 +54,7 @@ namespace Portal.Controllers
                 var students = (from u in db.Users
                                 where u.type == "Student"
                                 select u).ToList();
-                return View(students);
-
-            
+                return View(students); 
         }
 
         public ActionResult AddGrade()
@@ -70,7 +79,7 @@ namespace Portal.Controllers
                 
                 db.Marks.Add(mk);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CheckGrade");
             }
 
             return View(m);
@@ -82,6 +91,16 @@ namespace Portal.Controllers
             PortalEntities db = new PortalEntities();
             var marks = db.Marks.ToList();
             return View(marks);
+        }
+
+        [HttpPost]
+        public ActionResult CheckGrade(string searchGrade)
+        {
+            PortalEntities db = new PortalEntities();
+            var grade = (from g in db.Marks
+                          where g.coursename.Contains(searchGrade)
+                          select g).ToList();
+            return View(grade);
         }
 
         public ActionResult CheckGradeDetails(int id)
@@ -174,6 +193,18 @@ namespace Portal.Controllers
             var notice = db.Notices.ToList();
             return View(notice);
         }
+
+        [HttpPost]
+        public ActionResult CheckNotice(string searchnotice)
+        {
+            PortalEntities db = new PortalEntities();
+            var notice = (from g in db.Notices
+                         where g.notice1.Contains(searchnotice)
+                         select g).ToList();
+            return View(notice);
+        }
+
+
         public ActionResult EditNotice(int id)
         {
             PortalEntities db = new PortalEntities();
@@ -218,6 +249,26 @@ namespace Portal.Controllers
             db.Notices.Remove(notice);
             db.SaveChanges();
             return RedirectToAction("CheckNotice");
+        }
+
+        public ActionResult AllStudentsDetails()
+        {
+            PortalEntities db = new PortalEntities();
+
+            var students = (from u in db.Users
+                            where u.type == "Student"
+                            select u).ToList();
+            return View(students);
+        }
+
+        [HttpPost]
+        public ActionResult AllStudentsDetails(string searchuser)
+        {
+            PortalEntities db = new PortalEntities();
+            var students = (from u in db.Users
+                          where u.name.Contains(searchuser)
+                          select u).ToList();
+            return View(students);
         }
 
     }
