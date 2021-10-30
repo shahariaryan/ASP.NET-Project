@@ -19,7 +19,7 @@ namespace Portal.Controllers
         public ActionResult CreateUser()
         {
             User u = new User();
-            u.courseid = Convert.ToInt32("3");
+            u.courseid = Convert.ToInt32("1006");
             return View(u);
         }
 

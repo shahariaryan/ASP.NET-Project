@@ -254,6 +254,8 @@
     <Content Include="Views\Admin\EditRequest.cshtml" />
     <Content Include="Views\Admin\DeleteRequest.cshtml" />
     <Content Include="Views\Feculty\AllStudentsDetails.cshtml" />
+    <Content Include="Views\Feculty\ProfileChange.cshtml" />
+    <Content Include="Views\Feculty\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
