@@ -52,6 +52,8 @@ namespace Portal.Controllers
                          select u).ToList();
             return View(users);
         }
+
+       
         public ActionResult EditUser(int id)
         {
             PortalEntities db = new PortalEntities();
@@ -200,6 +202,17 @@ namespace Portal.Controllers
             return View(req);
         }
 
+        [HttpPost]
+        public ActionResult CheckRequests(string searchreq)
+        {
+            PortalEntities db = new PortalEntities();
+            var req = (from r in db.Requests
+                          where r.coursename.Contains(searchreq)
+                          select r).ToList();
+            return View(req);
+        }
+
+
         public ActionResult CheckRequestsDetails(int id)
         {
 
@@ -255,6 +268,42 @@ namespace Portal.Controllers
             db.SaveChanges();
             return RedirectToAction("CheckRequests");
         }
+
+        public ActionResult ProfileChange()
+        {
+            PortalEntities db = new PortalEntities();
+            var id = Convert.ToInt32(Session["id"]);
+            var user = db.Users.FirstOrDefault(e => e.userid == id);
+            return View(user);
+        }
+
+        public ActionResult UpdateProfile(int id)
+        {
+            PortalEntities db = new PortalEntities();
+            var user = (from u in db.Users
+                        where u.userid == id
+                        select u).FirstOrDefault();
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProfile(User u)
+        {
+
+            PortalEntities db = new PortalEntities();
+            var user = (from uu in db.Users
+                        where uu.userid == u.userid
+                        select uu).FirstOrDefault();
+
+            user.uid= u.uid;
+            user.name = u.name;
+            user.email = u.email;
+            user.password = u.password;
+
+            db.SaveChanges();
+            return RedirectToAction("ProfileChange");
+        }
+
     }
 
 } 

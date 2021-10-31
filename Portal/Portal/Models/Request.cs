@@ -11,12 +11,16 @@ namespace Portal.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Request
     {
         public int id { get; set; }
+        [Required]
         public string coursename { get; set; }
+        [Required]
         public string department { get; set; }
+        [Required]
         public string status { get; set; }
         public int userid { get; set; }
     

@@ -256,9 +256,12 @@
     <Content Include="Views\Feculty\AllStudentsDetails.cshtml" />
     <Content Include="Views\Feculty\ProfileChange.cshtml" />
     <Content Include="Views\Feculty\UpdateProfile.cshtml" />
+    <Content Include="Views\Admin\ProfileChange.cshtml" />
+    <Content Include="Views\Admin\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Authendication\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

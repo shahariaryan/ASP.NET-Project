@@ -11,7 +11,8 @@ namespace Portal.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         public User()
@@ -23,10 +24,15 @@ namespace Portal.Models
     
         public int userid { get; set; }
         public string uid { get; set; }
+        [Required]
         public string name { get; set; }
+        [Required]
         public string email { get; set; }
+        [Required]
         public string department { get; set; }
+        [Required]
         public string cgpa { get; set; }
+        [Required]
         public string password { get; set; }
         public string type { get; set; }
         public int courseid { get; set; }

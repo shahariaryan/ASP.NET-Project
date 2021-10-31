@@ -38,6 +38,10 @@ namespace Portal.Controllers
                     {
                         return RedirectToAction("Home", "Admin");
                     }
+                    else if (user.type.Trim() == "Student")
+                    {
+                        return RedirectToAction("Home", "Student");
+                    }
 
                 }
                 TempData["ErrorMessage"] = "Incorrect Username/Password";
